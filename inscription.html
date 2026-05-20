@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inscription - Hôtel</title>
+  
+  <!-- Bootstrap 5 CSS (local) -->
+  <link href="vendor/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Fontawesome (local) -->
+  <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
+  
+  <!-- CSS personnalisé -->
+  <style>
+    /* Dégradé personnalisé */
+    .bg-degrade {
+      background: linear-gradient(60deg, #1E0569, #5b0cdc);
+    }
+    
+    /* Bouton avec dégradé et animation */
+    .btn-degrade {
+      background: linear-gradient(60deg, #1E0569, #5b0cdc);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    .btn-degrade:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(91, 12, 220, 0.3);
+      background: linear-gradient(60deg, #2a0a7a, #6b1be8);
+    }
+    
+    .btn-degrade:active {
+      transform: translateY(0);
+    }
+    
+    /* Ombre personnalisée */
+    .shadow-custom {
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Coins arrondis personnalisés */
+    .rounded-4 {
+      border-radius: 1.25rem !important;
+    }
+    
+    /* Focus personnalisé pour les inputs */
+    .form-control:focus {
+      border-color: #5b0cdc;
+      box-shadow: 0 0 0 0.2rem rgba(91, 12, 220, 0.25);
+    }
+    
+    /* Animation d'apparition */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .animate-fade-in {
+      animation: fadeInUp 0.6s ease-out;
+    }
+    
+    /* Fond d'arrière-plan */
+    body {
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      height: 100vh;
+      overflow: hidden;
+    }
+    
+    /* Effet hover sur le lien */
+    .hover-purple:hover {
+      color: #5b0cdc !important;
+      transition: color 0.2s ease;
+    }
+    
+    /* Ajustement de la carte pour qu'elle tienne dans l'écran */
+    .card {
+      max-height: calc(100vh - 100px);
+      overflow-y: auto;
+    }
+    
+    /* Masquer la scrollbar sur la carte tout en gardant la fonctionnalité */
+    .card::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    .card::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+    
+    .card::-webkit-scrollbar-thumb {
+      background: #5b0cdc;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body class="d-flex flex-column" style="height: 100vh; overflow: hidden;">
+
+<!-- Header compact -->
+<header class="bg-degrade text-white shadow-sm flex-shrink-0">
+  <nav class="navbar navbar-expand-lg navbar-dark container py-2">
+    <div class="container-fluid px-0">
+      <a class="navbar-brand fw-bold fs-3" href="accueil.html">
+        <i class="fas fa-building me-2"></i>Hôtel
+      </a>
+      
+      <div class="ms-auto">
+        <a class="nav-link text-white-50 hover-purple" href="accueil.html">
+          <i class="fas fa-home me-1"></i>Accueil
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Contenu principal -->
+<main class="flex-grow-1 d-flex align-items-center justify-content-center py-2">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-6">
+        
+        <!-- Carte d'inscription -->
+        <div class="card border-0 shadow-custom rounded-4 animate-fade-in">
+          <div class="card-body p-3 p-md-4">
+            
+            <!-- En-tête compact -->
+            <div class="text-center mb-2">
+              <div class="bg-degrade rounded-circle d-inline-flex p-2 mb-1 shadow-sm">
+                <i class="fas fa-user-plus text-white fs-3"></i>
+              </div>
+              <h1 class="h4 fw-bold" style="color: #1E0569;">Créer un compte</h1>
+              <p class="text-secondary small">Créez votre espace personnel</p>
+            </div>
+            
+            <!-- Messages d'erreur -->
+            <div id="erreurMdp" class="alert alert-danger d-none small py-1" role="alert">
+              <i class="fas fa-exclamation-triangle me-2"></i>
+              Les mots de passe ne correspondent pas.
+            </div>
+            
+            <div id="erreurChamps" class="alert alert-danger d-none small py-1" role="alert">
+              <i class="fas fa-exclamation-triangle me-2"></i>
+              Veuillez remplir tous les champs correctement.
+            </div>
+            
+            <!-- Formulaire compact -->
+            <form action="traitement_inscription.php" method="POST" id="formInscription">
+              
+              <!-- Nom complet -->
+              <div class="mb-2">
+                <label for="nom_complet" class="form-label fw-semibold small">
+                  <i class="fas fa-user me-1" style="color: #5b0cdc;"></i>Nom complet
+                </label>
+                <input type="text" class="form-control form-control-sm" id="nom_complet" name="nom_complet" 
+                       placeholder="Jean Dupont" required>
+              </div>
+              
+              <!-- Email -->
+              <div class="mb-2">
+                <label for="email" class="form-label fw-semibold small">
+                  <i class="fas fa-envelope me-1" style="color: #5b0cdc;"></i>Email
+                </label>
+                <input type="email" class="form-control form-control-sm" id="email" name="email" 
+                       placeholder="jean.dupont@exemple.com" required>
+              </div>
+              
+              <!-- Téléphone -->
+              <div class="mb-2">
+                <label for="telephone" class="form-label fw-semibold small">
+                  <i class="fas fa-phone me-1" style="color: #5b0cdc;"></i>Téléphone
+                </label>
+                <input type="tel" class="form-control form-control-sm" id="telephone" name="telephone" 
+                       placeholder="+237 6XXXXXXXX" required>
+              </div>
+              
+              <!-- Mot de passe -->
+              <div class="mb-2">
+                <label for="mot_de_passe" class="form-label fw-semibold small">
+                  <i class="fas fa-lock me-1" style="color: #5b0cdc;"></i>Mot de passe
+                </label>
+                <input type="password" class="form-control form-control-sm" id="mot_de_passe" name="mot_de_passe" 
+                       placeholder="••••••••" required>
+                <div class="form-text text-muted small">Minimum 8 caractères</div>
+              </div>
+              
+              <!-- Confirmation -->
+              <div class="mb-2">
+                <label for="confirmer_mdp" class="form-label fw-semibold small">
+                  <i class="fas fa-check-circle me-1" style="color: #5b0cdc;"></i>Confirmer
+                </label>
+                <input type="password" class="form-control form-control-sm" id="confirmer_mdp" name="confirmer_mdp" 
+                       placeholder="••••••••" required>
+              </div>
+              
+              <!-- Conditions -->
+              <div class="mb-2">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="conditions" required style="border-color: #5b0cdc;">
+                  <label class="form-check-label small" for="conditions">
+                    J'accepte les <a href="#" class="text-decoration-none" style="color: #5b0cdc;">conditions</a>
+                  </label>
+                </div>
+              </div>
+              
+              <!-- Bouton -->
+              <button type="submit" class="btn btn-degrade text-white w-100 py-1 fw-semibold border-0 mt-2">
+                <i class="fas fa-user-plus me-2"></i>S'inscrire
+              </button>
+              
+              <!-- Séparateur -->
+              <div class="position-relative my-2">
+                <hr>
+                <span class="position-absolute top-50 start-50 translate-middle bg-white px-3 text-muted small">
+                  ou
+                </span>
+              </div>
+              
+              <!-- Lien connexion -->
+              <div class="text-center">
+                <p class="mb-0 small">
+                  Déjà un compte ?
+                  <a href="connexion.html" class="text-decoration-none fw-semibold" style="color: #5b0cdc;">
+                    <i class="fas fa-sign-in-alt me-1"></i>Se connecter
+                  </a>
+                </p>
+              </div>
+              
+            </form>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Footer compact -->
+<footer class="bg-white border-top py-1 flex-shrink-0">
+  <div class="container">
+    <div class="row justify-content-between align-items-center">
+      <div class="col-12 col-md-auto text-center text-md-start">
+        <i class="fas fa-phone-alt me-2" style="color: #5b0cdc;"></i>
+        <span class="small">+237 6 81 72 33 45 / 6 99 50 78 34</span>
+      </div>
+      <div class="col-12 col-md-auto text-center text-md-end">
+        <span class="small text-muted">
+          <i class="far fa-copyright me-1"></i>2026 Hôtel
+        </span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="vendor/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  document.getElementById('formInscription').addEventListener('submit', function(event) {
+    var nomComplet = document.getElementById('nom_complet').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var telephone = document.getElementById('telephone').value.trim();
+    var motDePasse = document.getElementById('mot_de_passe').value;
+    var confirmerMdp = document.getElementById('confirmer_mdp').value;
+    var conditions = document.getElementById('conditions').checked;
+    
+    var erreurMdpDiv = document.getElementById('erreurMdp');
+    var erreurChampsDiv = document.getElementById('erreurChamps');
+    
+    erreurMdpDiv.classList.add('d-none');
+    erreurChampsDiv.classList.add('d-none');
+    
+    if (nomComplet === '' || email === '' || telephone === '' || motDePasse === '' || confirmerMdp === '') {
+      event.preventDefault();
+      erreurChampsDiv.classList.remove('d-none');
+      erreurChampsDiv.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i>Veuillez remplir tous les champs.';
+      erreurChampsDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      event.preventDefault();
+      erreurChampsDiv.classList.remove('d-none');
+      erreurChampsDiv.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i>Email valide requis.';
+      erreurChampsDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    
+    if (telephone.length < 8) {
+      event.preventDefault();
+      erreurChampsDiv.classList.remove('d-none');
+      erreurChampsDiv.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i>Téléphone valide requis.';
+      erreurChampsDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    
+    if (motDePasse.length < 8) {
+      event.preventDefault();
+      erreurChampsDiv.classList.remove('d-none');
+      erreurChampsDiv.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i>8 caractères minimum.';
+      erreurChampsDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    
+    if (motDePasse !== confirmerMdp) {
+      event.preventDefault();
+      erreurMdpDiv.classList.remove('d-none');
+      erreurMdpDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    
+    if (!conditions) {
+      event.preventDefault();
+      erreurChampsDiv.classList.remove('d-none');
+      erreurChampsDiv.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i>Acceptez les conditions.';
+      erreurChampsDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+  });
+  
+  var mdp1 = document.getElementById('mot_de_passe');
+  var mdp2 = document.getElementById('confirmer_mdp');
+  
+  function verifierCorrespondance() {
+    var erreurMdpDiv = document.getElementById('erreurMdp');
+    if (mdp1.value === mdp2.value && mdp2.value !== '') {
+      erreurMdpDiv.classList.add('d-none');
+    }
+  }
+  
+  mdp1.addEventListener('input', verifierCorrespondance);
+  mdp2.addEventListener('input', verifierCorrespondance);
+</script>
+
+</body>
+</html>

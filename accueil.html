@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hôtel - Accueil</title>
+  
+  <!-- Bootstrap 5 CSS (local) -->
+  <link href="vendor/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Fontawesome (local) -->
+  <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
+  
+  <style>
+    /* Dégradés personnalisés */
+    .bg-degrade {
+      background: linear-gradient(60deg, #1E0569, #5b0cdc);
+    }
+    
+    .btn-degrade {
+      background: linear-gradient(60deg, #1E0569, #5b0cdc);
+      border: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    .btn-degrade:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(91, 12, 220, 0.4);
+      background: linear-gradient(60deg, #2a0a7a, #6b1be8);
+    }
+    
+    .btn-outline-degrade {
+      border: 2px solid #5b0cdc;
+      color: #5b0cdc;
+      background: transparent;
+      transition: all 0.2s ease;
+    }
+    
+    .btn-outline-degrade:hover {
+      background: linear-gradient(60deg, #1E0569, #5b0cdc);
+      border-color: transparent;
+      color: white;
+      transform: translateY(-2px);
+    }
+    
+    /* Hero section */
+    .hero-section {
+      position: relative;
+      background-image: url('img_accueil.jpg');
+      background-size: cover;
+      background-position: center;
+      height: calc(100vh - 130px);
+    }
+    
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(30, 5, 105, 0.75), rgba(91, 12, 220, 0.6));
+    }
+    
+    /* Animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .animate-fade-in {
+      animation: fadeInUp 0.8s ease-out;
+    }
+    
+    /* Focus inputs */
+    .form-control:focus, .form-select:focus {
+      border-color: #5b0cdc;
+      box-shadow: 0 0 0 0.2rem rgba(91, 12, 220, 0.25);
+    }
+    
+    /* Corps sans défilement */
+    body {
+      height: 100vh;
+      overflow: hidden;
+      background: #f5f7fa;
+    }
+    
+    /* Lien personnalisé */
+    .nav-link-custom {
+      transition: all 0.2s ease;
+    }
+    
+    .nav-link-custom:hover {
+      color: #c4a2ff !important;
+      transform: translateY(-2px);
+    }
+    
+    /* Flottement icônes */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    
+    .float-icon {
+      animation: float 3s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="d-flex flex-column">
+
+<!-- Header -->
+<header class="bg-degrade text-white shadow-sm flex-shrink-0">
+  <nav class="navbar navbar-expand-lg navbar-dark container py-3">
+    <div class="container-fluid px-0">
+      <a class="navbar-brand fw-bold fs-2" href="accueil.html">
+        <i class="fas fa-building me-2"></i>Hôtel
+      </a>
+      
+      <div class="ms-auto d-flex gap-4 align-items-center">
+        <a class="nav-link nav-link-custom text-white" href="#">
+          <i class="fas fa-bed me-1"></i>Voir nos chambres
+        </a>
+        <a class="btn btn-outline-light rounded-pill px-4" href="connexion.html">
+          <i class="fas fa-sign-in-alt me-2"></i>Se connecter
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Hero Section -->
+<main class="flex-grow-1 hero-section">
+  <div class="hero-overlay"></div>
+  
+  <div class="container h-100 d-flex flex-column justify-content-center position-relative" style="z-index: 2;">
+    <div class="row animate-fade-in">
+      <div class="col-lg-8 mx-auto text-center text-white">
+        
+        <!-- Icône principale -->
+        <div class="mb-4">
+          <i class="fas fa-hotel fs-1 float-icon"></i>
+        </div>
+        
+        <!-- Titre -->
+        <h1 class="display-3 fw-bold mb-3">
+          Vivez une expérience <span style="color: #c4a2ff;">inoubliable</span>
+        </h1>
+        
+        <!-- Sous-titre -->
+        <p class="lead mb-4 opacity-90">
+          Découvrez le luxe, le confort et un service d'exception dans un cadre unique
+        </p>
+        
+        <!-- Formulaire de réservation rapide -->
+        <div class="bg-white rounded-4 p-4 shadow-lg mt-4" style="background: rgba(255,255,255,0.95) !important;">
+          <div class="row g-3 align-items-end">
+            <div class="col-md-3">
+              <label class="form-label small fw-semibold text-dark">
+                <i class="fas fa-calendar-alt me-1" style="color: #5b0cdc;"></i>Arrivée
+              </label>
+              <input type="date" class="form-control">
+            </div>
+            <div class="col-md-3">
+              <label class="form-label small fw-semibold text-dark">
+                <i class="fas fa-calendar-check me-1" style="color: #5b0cdc;"></i>Départ
+              </label>
+              <input type="date" class="form-control">
+            </div>
+            <div class="col-md-2">
+              <label class="form-label small fw-semibold text-dark">
+                <i class="fas fa-user me-1" style="color: #5b0cdc;"></i>Personnes
+              </label>
+              <input type="number" class="form-control" placeholder="2" min="1" value="2">
+            </div>
+            <div class="col-md-2">
+              <label class="form-label small fw-semibold text-dark">
+                <i class="fas fa-bed me-1" style="color: #5b0cdc;"></i>Chambres
+              </label>
+              <input type="number" class="form-control" placeholder="1" min="1" value="1">
+            </div>
+            <div class="col-md-2">
+              <button type="submit" class="btn btn-degrade text-white w-100 py-2">
+                <i class="fas fa-search me-2"></i>Vérifier
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Boutons d'action -->
+        <div class="d-flex gap-3 justify-content-center mt-5">
+          <a href="#" class="btn btn-degrade text-white px-4 py-2 rounded-pill">
+            <i class="fas fa-calendar-alt me-2"></i>Réserver maintenant
+          </a>
+          <a href="#" class="btn btn-outline-degrade px-4 py-2 rounded-pill">
+            <i class="fas fa-info-circle me-2"></i>En savoir plus
+          </a>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Section des services -->
+<footer class="bg-white border-top flex-shrink-0">
+  <div class="container py-3">
+    <div class="row g-4 text-center">
+      <div class="col-md-4">
+        <div class="d-flex flex-column align-items-center">
+          <div class="float-icon mb-2">
+            <i class="fas fa-bed fs-2" style="color: #5b0cdc;"></i>
+          </div>
+          <h3 class="h6 fw-bold mb-1">Chambres confortables</h3>
+          <p class="small text-muted mb-0">Équipées pour votre bien-être</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="d-flex flex-column align-items-center">
+          <div class="float-icon mb-2">
+            <i class="fas fa-wifi fs-2" style="color: #5b0cdc;"></i>
+          </div>
+          <h3 class="h6 fw-bold mb-1">Wi‑Fi haut débit</h3>
+          <p class="small text-muted mb-0">Restez connecté en tout temps</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="d-flex flex-column align-items-center">
+          <div class="float-icon mb-2">
+            <i class="fas fa-concierge-bell fs-2" style="color: #5b0cdc;"></i>
+          </div>
+          <h3 class="h6 fw-bold mb-1">Room service 24h/24</h3>
+          <p class="small text-muted mb-0">À votre disposition à toute heure</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Footer contact -->
+  <div class="border-top bg-light py-2">
+    <div class="container">
+      <div class="row justify-content-between align-items-center">
+        <div class="col-md-4 text-center text-md-start">
+          <i class="fas fa-phone-alt me-2" style="color: #5b0cdc;"></i>
+          <span class="small">+237 6 81 72 33 45 / 6 99 50 78 34</span>
+        </div>
+        <div class="col-md-4 text-center my-2 my-md-0">
+          <a href="#" class="text-dark text-decoration-none mx-2">
+            <i class="fab fa-facebook-f" style="color: #5b0cdc;"></i>
+          </a>
+          <a href="#" class="text-dark text-decoration-none mx-2">
+            <i class="fab fa-instagram" style="color: #5b0cdc;"></i>
+          </a>
+          <a href="#" class="text-dark text-decoration-none mx-2">
+            <i class="fab fa-twitter" style="color: #5b0cdc;"></i>
+          </a>
+        </div>
+        <div class="col-md-4 text-center text-md-end">
+          <span class="small text-muted">
+            <i class="far fa-copyright me-1"></i>2026 Hôtel. Tous droits réservés.
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="vendor/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
